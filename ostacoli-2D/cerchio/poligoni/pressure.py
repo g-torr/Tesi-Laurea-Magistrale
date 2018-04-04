@@ -1,0 +1,18 @@
+def pressure():
+	L,f_pol,p_bordo_pol=transpose(loadtxt("./D=1/sim_vs_L.dat"))
+	tau,f_pol_4,p_bordo_pol_4=transpose(loadtxt("./D=4/sim_vs_tau.dat"))
+	figure(figsize=[4,3])
+	plot(L,f_pol/(2*pi*1/pi),"s",label="$D=1$",ms=5,mec="b",mew=2,c="w",alpha=0.7)
+	plot(sqrt(tau*4),f_pol_4/(2*pi*4/pi),"o",label="$D=4$",ms=5,mec="m",mew=2,c="w",alpha=0.7)
+	l=10**linspace(-2,2,100)
+	plot(l,(2*1+l*sqrt(2*pi))/(2*l**2+sqrt(2*pi)*l+1)/(2*pi*1/pi),color="k",label="Prediction")
+	plot(l,sqrt(pi/8)/l,"r--",label="quenched limit")
+	xlabel("$\\mathscr{L}/R$",fontsize=8)	
+	ylabel("$p/p_0$",fontsize=8)
+	legend(loc="best",frameon=False,numpoints=1,fontsize=14)
+	loglog()
+	ylim(0.015,1.3)
+	tight_layout()
+	xlabel("$\\mathscr{L}/R$",fontsize=18)
+	ylabel("$p/p_0$",fontsize=18)
+

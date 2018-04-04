@@ -1,0 +1,26 @@
+def shape():
+	R=1;r=0.
+	x0,y0=transpose(loadtxt("input.dat"))
+	x0=append(x0,x0[0]);y0=append(y0,y0[0]);plot(x0,y0,"-")
+	plot([0,cos(pi/4)],[0,sin(pi/4)],"k")
+	plot([0,1],[0,0],"k")
+	plot([0,-1],[0,0],"k")
+
+	#plot([0,0.5*cos(pi/4)],[(1-0.5)/sin(pi/4),(1-0.5)/sin(pi/4)+0.5*sin(pi/4)],"k")
+	plot([0,0],[0,(R-r)/sin(pi/4)],"k")
+	plot([0,cos(pi/4)],[R/sin(pi/4),sin(pi/4)],lw=2,color="k")
+	plot([0,-cos(pi/4)],[R/sin(pi/4),sin(pi/4)],lw=2,color="k")
+	plot([0,-cos(pi/4)],[0,sin(pi/4)],color="k")
+	t=linspace(0,pi/4,100)
+	plot(0.3*cos(t),0.3*sin(t),"k")
+	plot(0.15*cos(t+pi/4),0.15*sin(t+pi/4),"k")
+	plot(0.2*cos(t+pi/4),0.2*sin(t+pi/4),"k")
+	plot(-0.3*cos(t),0.3*sin(t),"k")
+	plot(-0.15*cos(t+pi/4),0.15*sin(t+pi/4),"k")
+	plot(-0.2*cos(t+pi/4),0.2*sin(t+pi/4),"k")
+
+	#plot(0.15*cos(t+pi/4),0.5/sin(pi/4)+0.15*sin(t+pi/4),"k")
+	#plot(0.2*cos(t+pi/4),0.5/sin(pi/4)+0.2*sin(t+pi/4),"k")
+	ax=gca()
+	ax.set_aspect(1)
+	axis("off")

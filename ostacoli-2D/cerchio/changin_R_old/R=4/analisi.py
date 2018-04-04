@@ -1,0 +1,272 @@
+from pylab import*
+import scipy.special
+
+R=4.
+L=0.1
+print ("questo file dipende stettamente dalla geometria in uso, non spostarlo di cartella senza verificare la correttezza del raggio, R="+str(R)+"L="+str(L))
+
+def     xy(r,phi):
+        return r*np.cos(phi), r*np.sin(phi)
+
+def	grafica(i=8,b="input.dat"):
+	posizione= "./posizione/dati_"+str(i)
+	x,y=transpose(loadtxt(posizione))
+	x1,y1=transpose(loadtxt(b))
+	x1=append(x1,x1[0])
+	y1=append(y1,y1[0])
+	plot(x,y,"b.")
+	plot(x1,y1,"-g")
+	#xlim(-2,2)	
+	
+def	grafica2(i,xmin,xmax,ymin,ymax):
+	posizione= "./posizione/dati_"+str(i)
+	x,y=transpose(loadtxt(posizione))
+	N=len(x)
+	#plot(x,y,"bo")
+	h,bx,by = histogram2d(x,y,bins=[arange(xmin,xmax,0.02),arange(ymin,ymax,0.02)])	
+	h=h/N
+	phis=np.arange(0,6.28,0.01)
+#	plot( *xy(r,phis), c='r',ls='-' )
+	return h,bx,by
+
+def	grafica_all(nof=8,r1=1.5,r2=0.5):
+	size=8.
+	posizione= "./posizione/dati_0"
+	x,y=transpose(loadtxt(posizione))
+	xmin=min(x)-0.1
+	ymin=min(y)-0.1
+	xmax=max(x)+0.1
+	ymax=max(y)+0.1
+	h,bx,by=grafica2(0,xmin,xmax,ymin,ymax)
+	for i in arange (1,nof):
+		h,bx_par,by_par=grafica2(i,xmin,xmax,ymin,ymax)
+		bx+=bx_par
+		by+=by_par
+	h=transpose(h)	
+	h=h/nof
+	imshow(h,extent=(xmin,xmax,ymin,ymax))
+	
+def	campo_velocity(nf=8):
+	x,y=transpose(loadtxt("./posizione/dati_"+str(0)))
+	vx,vy=transpose(loadtxt("./velocity/velocity_"+str(0)))
+	somma_vx=sum(vx)
+	somma_vy=sum(vy)
+	N=len(vx)
+	for i in arange (1,nf):					
+		x,y=transpose(loadtxt("./posizione/dati_"+str(i)))
+		vx,vy=transpose(loadtxt("./velocity/velocity_"+str(i)))
+		somma_vx+=sum(vx)
+		somma_vy+=sum(vy)
+		N+=len(vx)
+	print("somma delle vy"+str(somma_vx/float(N)))
+	print("somma delle vx"+str(somma_vy/float(N)))
+	
+
+def	forza(i,fmax,nb):
+	forza= "./forza/forza_"+str(i)
+	fx,fy=transpose(loadtxt(forza))
+	N=len(fx)
+	modulo=sqrt(fx**2+fy**2)
+	modulo=modulo[modulo!=0]
+	fx=fx
+	fy=fy
+	part_on_bound=len(modulo)
+	#print(" le pallette che sbattono sono "+str(part_on_bound)+" su "+str(N))
+	'''print(" forza media F_x="+str(mean(fx)))
+	print(" forza media F_y="+str(mean(fy)))'''
+	figure(4)
+	plot(i,mean(fy),"o")
+	figure(3)
+	plot(i,mean(fx),"o")
+        hx,bx = histogram(fx[fx!=0], bins=linspace(-fmax,fmax,nb),normed=True)
+	hy,by = histogram(fy[fy!=0], bins=linspace(-fmax,fmax,nb),normed=True)
+	'''hx,b1 = histogram(fx, bins=linspace(-fmax,fmax,nb),normed=True)
+	hy,b1 = histogram(fy, bins=linspace(-fmax,fmax,nb),normed=True)'''
+	bx = (bx[1:]+bx[:-1])/2. #credo serva per prendere il centro
+        by = (by[1:]+by[:-1])/2.
+	figure(0)
+	title("fx")
+	plot(bx,hx)
+	figure(1)
+	title("fy")
+	plot(by,hy)
+	ratio= float(part_on_bound)/float(N)
+	#return h,hx,hy,ratio
+	return hx,hy,bx,by,ratio
+	
+def	momenti(i=8,bins=50):
+	forza= "./forza/forza_"+str(i)
+	fx,fy=transpose(loadtxt(forza))
+	N=len(fx)
+	posizione= "./posizione/dati_"+str(i)
+	x,y=transpose(loadtxt(posizione))
+	mom=[]
+	for i in range(0,N):
+		momento=x[i]*fy[i]-y[i]*fx[i]
+		mom+=[momento]	
+	mom=array(mom)	
+	print("il momento risultante rispetto all'origine="+str(sum(mom)))	
+	mom1=mom[mom!=0]
+	print("i momenti diversi da 0 sono"+str(len(mom1)))
+	# ***************plot i momenti**********
+	title("istogramma dei momenti diversi da 0")
+	hist(mom1,bins,normed=True)
+	'''h,b = histogram(mom1, bins=linspace(mom1.min(),mom1.max(),100),normed=True)
+	x = (b[1:]+b[:-1])/2. #credo serva per predendere il centro
+	plot(x,h,'-ob')
+	'''
+
+def	media_temporale(start,stop,nb=150):
+	figure(0)
+	title("istogramma del modulo  della forza diversa da 0")
+	D=50.	
+	tau=10.
+	fmax=3*sqrt(D/tau)
+	#h_sum,hx_sum,hy_sum,parti_on_bound = forza(0,fmax,nb)
+	hx,hy,bx,by,parti_on_bound=forza(start,fmax,nb)
+	p_on_b=[]
+	p_on_b=append(p_on_b,parti_on_bound)
+	for i in arange(start+1,stop+1):
+		par_x,par_y,bx,by,parti_on_bound=forza(i,fmax,nb)
+		p_on_b=append(p_on_b,parti_on_bound)
+		hx+=par_x
+		hy+=par_y
+	print("simulated ratio particles on boundary over all particles "+str(mean(p_on_b)))
+	#theoretical=(normalization(r1,r2)-pi*r1*r2)/normalization(r1,r2)
+	#print("theoretical probabilty  particles on boundary"+str(theoretical)) 
+	#h_sum=array(h_sum)
+	#modulo_forza(D,tau)
+	'''b=linspace(-0.1,fmax,nb)
+	bx = (bx[1:]+bx[:-1])/2. #credo serva per prendere il centro
+	by = (by[1:]+by[:-1])/2.
+	figure(0)
+	xlabel("fx")
+	ylabel("density")
+	plot(bx,hx,'-k',lw=2)'''
+	figure(1)
+        xlabel("fy")
+        ylabel("density")
+	figure(4)
+	title ("$F_y$ component")
+	savefig("Fy_termalization.pdf")
+	figure(3)
+	savefig("Fx_termalization.pdf")
+	title ("$F_x$ component")
+	plot(by,hy,'-k',lw=2)
+	#b1=linspace(-fmax,fmax,nb)
+	'''fx = (b1[1:]+b1[:-1])/2.
+	figure(1)
+	title("histogram of the x axis component of the force")
+	plot(fx,hx_sum,'-k',lw=2)
+	figure(2)
+	plot(fx,hy_sum,'-k',lw=2)'''	
+
+def	campo_vettoriale(i=8,r1=1.5,r2=0.5):
+	x,y=transpose(loadtxt("./posizione/dati_"+str(i)))
+	fx,fy=transpose(loadtxt("./forza/forza_"+str(i)))
+	#modulo=sqrt(fx*fx+fy*fy)
+	xmn = -r1-0.1
+        xmx = r1 +0.1
+        ymn = -r2 -0.1
+        ymax= r2 +0.1
+	xstep=(xmx-xmn)/100
+	ystep=(ymax-ymn)/100
+	h,bx,by = histogram2d(x,y,bins=[arange(xmn,xmx,xstep),arange(ymn,ymax,ystep)])
+	hfx,bx,by = histogram2d(x,y,bins=[arange(xmn,xmx,xstep),arange(ymn,ymax,ystep)],weights=fx)
+	hfy,bx,by = histogram2d(x,y,bins=[arange(xmn,xmx,xstep),arange(ymn,ymax,ystep)],weights=fy)
+	hfx = where(h>0,hfx/h,0)
+	hfy = where(h>0,hfy/h,0)
+	f=hfx**2+hfy**2
+	print(len(bx),len(by))
+	quiver(bx[:-1]+xstep,by[:-1]+ystep,hfy,hfx,f,scale=20)
+#        quiver(by[:-1],bx[:-1],hfy,hfx,f,scale=20)
+
+	#print("la media del modulo della forza e' "+str(mean(modulo)))
+	ax=gca()#fissa gli assi
+	ax.set_aspect(1)#mette la stessa scala  tra x e y
+	show()
+	colorbar()
+	
+def pressione(start,stop):
+	print("Sto calcolando la pressione riscalata per la density of bulk solo al centro")
+	area=pi*R**2
+        fx,fy=transpose(loadtxt("./forza/forza_"+str(start)))
+	x,y=transpose(loadtxt("./posizione/dati_"+str(start)))
+	for i in arange(start+1,stop+1):
+                temp_fx,temp_fy=transpose(loadtxt("./forza/forza_"+str(i)))
+		temp_x,temp_y=transpose(loadtxt("./posizione/dati_"+str(i)))
+		fx=append(fx,temp_fx)
+		fy=append(fy,temp_fy)
+		x=append(x,temp_x)
+		y=append(y,temp_y)
+	F=sqrt(fx**2+fy**2)
+	p=sum(F)/(2*pi*R)/(stop-start+1)
+	r0=R-5*L
+	r=sqrt(x**2+y**2)
+	number_bulk=count_nonzero(r<r0)/(stop-start+1)#particelle sul bulk
+	rho=number_bulk/(pi*r0**2) #densita' di bulk
+	print(" density of bulk = "+str(rho))
+	p=p/rho #normalizzo rispetto alla densita' di bulk
+	np.save("pressione.npy",array([R,p]))
+#	print ("da confrontare con "+str(D*(1+L/R)))
+	print ("pressione normalizzata="+str(p))
+
+def	forza_netta(nf=9):
+        fx,fy=transpose(loadtxt("./forza/forza_0"))
+        nx=len(fx[fx!=0])
+	ny=len(fy[fy!=0])
+	somma_x=sum(fx)
+	somma_y=sum(fy)
+	N=len(fx)
+        for i in arange(1,nf):
+                tempx,tempy=transpose(loadtxt("./forza/forza_"+str(i)))
+		somma_x+=sum(tempx)
+		somma_y+=sum(tempy)
+		nx+=len(tempx[tempx!=0])
+		ny+=len(tempy[tempy!=0])
+		N+=len(tempx)
+	print("viene calcolata mediando solo sulle particelle al bordo")
+	print("fx medio"+str(somma_x/float(nx)))
+	print("fy medio"+str(somma_y/float(ny)))
+	print("viene calcolata mediando su tutte")
+	print("fx medio"+str(somma_x/float(N)))
+	print("fy medio"+str(somma_y/float(N)))
+
+def	modulo_forza(start,finish):
+	fx,fy=transpose(loadtxt("./forza/forza_0"))
+	modulo =sqrt(fx**2+fy**2)
+	figure(0)
+	plot(0,mean(modulo),"o")
+	for i in arange(start+1,finish+1):
+		fx,fy=transpose(loadtxt("./forza/forza_"+str(i)))
+		temp_mod=sqrt(fx**2+fy**2)
+		modulo=append(modulo,temp_mod)
+		figure(0)
+		plot(i,mean(temp_mod),"o")
+	title (" media modulo forza")
+	xlabel ("t")
+	ylabel("$<|F|>$")
+	savefig("modulo_forza.pdf")
+	print("la media del modulo della forza e' "+str(mean(modulo)))
+	print("la varianza = "+str(std(modulo)))
+	#arc_lenght=4*r1*scipy.special.ellipe((r1**2-r2**2)/r1**2)
+	#theoretical=(D*arc_lenght+ D*sqrt(D*tau)*2.*pi	)/normalization(r1,r2)
+	#print(" theoretical average force module"+str(theoretical))
+def density_distribution(start,stop):
+	x,y=transpose(loadtxt("./posizione/dati_"+str(start)))
+	for i in arange(start+1,stop+1):
+		temp_x,temp_y=transpose(loadtxt("./posizione/dati_"+str(i)))
+		x=append(x,temp_x)
+		y=append(y,temp_y)
+	
+	r=sqrt(x**2+y**2)
+	h,b=histogram(r, bins=100, normed=True)
+	b=(b[:-1]+b[1:])/2.
+	plot(b, h/(2*pi*b))
+def normalization(r1,r2):
+	D=0.1
+	tau=0.06
+	arc_lenght=4*r1*scipy.special.ellipe((r1**2-r2**2)/r1**2)
+	return 	pi*r1*r2+sqrt(D*tau)*arc_lenght+D*tau*2*pi	
+	
+		

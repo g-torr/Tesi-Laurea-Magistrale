@@ -1,0 +1,239 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6645,        229]
+NotebookOptionsPosition[      5503,        183]
+NotebookOutlinePosition[      6014,        205]
+CellTagsIndexPosition[      5930,        200]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"M", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"B", "+", "G"}], ",", 
+      RowBox[{"-", "B"}], ",", 
+      RowBox[{"-", "G"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "A"}], ",", 
+      RowBox[{"-", "B"}], ",", 
+      RowBox[{"A", "+", "B"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"-", "A"}], ",", 
+      RowBox[{"A", "+", "G"}], ",", 
+      RowBox[{"-", "G"}]}], "}"}]}], "}"}]}]], "Input",
+ CellChangeTimes->{{3.686292801583188*^9, 3.686292878411619*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"B", "+", "G"}], ",", 
+     RowBox[{"-", "B"}], ",", 
+     RowBox[{"-", "G"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "A"}], ",", 
+     RowBox[{"-", "B"}], ",", 
+     RowBox[{"A", "+", "B"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "A"}], ",", 
+     RowBox[{"A", "+", "G"}], ",", 
+     RowBox[{"-", "G"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6862928818143997`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"LinearSolve", "[", 
+   RowBox[{"M", ",", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], "//", 
+  "Simplify"}]], "Input",
+ CellChangeTimes->{{3.686292888693882*^9, 3.686292923026229*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "0", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.686292923921597*^9, 3.6862929845369062`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.686293021140727*^9, 3.686293023455997*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NullSpace", "[", "M", "]"}]], "Input",
+ CellChangeTimes->{{3.686292991664445*^9, 3.686292995772862*^9}, {
+  3.686293111093251*^9, 3.686293121547946*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1", ",", "1"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.68629299685503*^9, 3.686293122347682*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "LinearSolve"}]], "Input",
+ CellChangeTimes->{{3.6862930049554*^9, 3.686293008463599*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\\!\\(\\*RowBox[{\\\"LinearSolve\\\", \\\"[\\\", \
+RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\",\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}], \\\"]\\\"}]\\) finds an \\!\\(\\*StyleBox[\\\"x\\\", \
+\\\"TI\\\"]\\) which solves the matrix equation \
+\\!\\(\\*RowBox[{RowBox[{StyleBox[\\\"m\\\", \\\"TI\\\"], \\\".\\\", \
+StyleBox[\\\"x\\\", \\\"TI\\\"]}], \\\"==\\\", StyleBox[\\\"b\\\", \
+\\\"TI\\\"]}]\\). \\n\\!\\(\\*RowBox[{\\\"LinearSolve\\\", \\\"[\\\", \
+StyleBox[\\\"m\\\", \\\"TI\\\"], \\\"]\\\"}]\\) generates a \\!\\(\\*RowBox[{\
+\\\"LinearSolveFunction\\\", \\\"[\\\", StyleBox[\\\"\[Ellipsis]\\\", \
+\\\"TR\\\"], \\\"]\\\"}]\\) which can be applied repeatedly to different \
+\\!\\(\\*StyleBox[\\\"b\\\", \\\"TI\\\"]\\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/LinearSolve"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.686293009145509*^9},
+ CellTags->"Info3686300209-5342650"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{"Thread", "[", 
+    RowBox[{
+     RowBox[{"M", ".", 
+      RowBox[{"{", 
+       RowBox[{"fa", ",", "fb", ",", "fg"}], "}"}]}], "\[Equal]", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"fa", ",", "fb", ",", "fg"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.686293280953507*^9, 3.68629332854224*^9}, {
+  3.6862934019190273`*^9, 3.686293408025309*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Solve", "::", "svars"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Equations may not give solutions for all \\\"solve\\\" \
+variables. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\
+\\\", ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Solve/svars\\\", \
+ButtonNote -> \\\"Solve::svars\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6862934093161497`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"fb", "\[Rule]", "fa"}], ",", 
+    RowBox[{"fg", "\[Rule]", "fa"}]}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.686293329789381*^9, 3.686293409317788*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Plus", "@@", "M"}]], "Input",
+ CellChangeTimes->{{3.686293462417302*^9, 3.686293483663949*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "2"}], " ", "A"}], "+", "B", "+", "G"}], ",", 
+   RowBox[{"A", "-", 
+    RowBox[{"2", " ", "B"}], "+", "G"}], ",", 
+   RowBox[{"A", "+", "B", "-", 
+    RowBox[{"2", " ", "G"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.686293473181511*^9, 3.6862934850437727`*^9}}]
+}, Open  ]]
+},
+WindowSize->{740, 599},
+WindowMargins->{{55, Automatic}, {Automatic, 42}},
+ShowSelection->True,
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3686300209-5342650"->{
+  Cell[2736, 104, 1047, 20, 82, "Print",
+   CellTags->"Info3686300209-5342650"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3686300209-5342650", 5825, 194}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 568, 19, 30, "Input"],
+Cell[1150, 43, 508, 18, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1695, 66, 249, 7, 30, "Input"],
+Cell[1947, 75, 149, 3, 30, "Output"]
+}, Open  ]],
+Cell[2111, 81, 92, 1, 30, "Input"],
+Cell[CellGroupData[{
+Cell[2228, 86, 177, 3, 30, "Input"],
+Cell[2408, 91, 170, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2615, 100, 118, 2, 30, "Input"],
+Cell[2736, 104, 1047, 20, 82, "Print",
+ CellTags->"Info3686300209-5342650"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3820, 129, 482, 13, 30, "Input"],
+Cell[4305, 144, 444, 9, 24, "Message"],
+Cell[4752, 155, 227, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5016, 166, 119, 2, 30, "Input"],
+Cell[5138, 170, 349, 10, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

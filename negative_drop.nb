@@ -1,0 +1,274 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9242,        264]
+NotebookOptionsPosition[      8462,        234]
+NotebookOutlinePosition[      8798,        249]
+CellTagsIndexPosition[      8755,        246]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{"\[Theta]", "=", 
+  RowBox[{"\[Pi]", "/", "6"}]}], "\[IndentingNewLine]", 
+ RowBox[{"\[Tau]", "=."}]}], "Input",
+ CellChangeTimes->{{3.7126487449656*^9, 3.712648753292124*^9}, {
+  3.712653935480695*^9, 3.712653943411611*^9}, {3.71265397740843*^9, 
+  3.7126539835787153`*^9}}],
+
+Cell[BoxData[
+ FractionBox["\[Pi]", "6"]], "Output",
+ CellChangeTimes->{
+  3.7126487540373573`*^9, 3.712653937062813*^9, {3.7126539807544203`*^9, 
+   3.7126539842695627`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"EdgeForm", "[", "Thick", "]"}], ",", 
+    RowBox[{"RGBColor", "[", 
+     RowBox[{"1.", ",", "0.7408255130846113", ",", "0.37500572213321126"}], 
+     "]"}], ",", 
+    RowBox[{"Disk", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "1", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "7"}], 
+         RowBox[{"\[Pi]", "/", "6"}]}], ",", 
+        RowBox[{"\[Pi]", "/", "6"}]}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.712648739215061*^9, 3.712648739215722*^9}, {
+  3.712649208633431*^9, 3.712649230683107*^9}, {3.712649274922886*^9, 
+  3.712649290892665*^9}, {3.7126493254622917`*^9, 3.712649372994896*^9}, {
+  3.7126495308738413`*^9, 3.712649533356485*^9}, {3.712649619350068*^9, 
+  3.712649626324996*^9}, {3.712651948446184*^9, 3.712651949564567*^9}}],
+
+Cell[BoxData[{
+ GraphicsBox[{
+   {RGBColor[1., 0.7408255130846113, 0.37500572213321126`], EdgeForm[
+    Thickness[Large]], 
+    DiskBox[{0.01249653727671429, -0.03182259942995669}, {0.9999999999999993, 0.9999999999999997},
+      NCache[{Rational[-7, 6] Pi, Rational[1, 6] Pi}, {-3.6651914291880923`, 
+      0.5235987755982988}]]}, InsetBox[
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"R", " ", 
+       RowBox[{"cos", "(", "\[Alpha]", ")"}]}], ",", 
+      RowBox[{"R", " ", 
+       RowBox[{"sin", "(", "\[Alpha]", ")"}]}]}]}], 
+    Scaled[{0.7698512416286383, 0.9631148658093814}], Center], InsetBox[
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "R"}], " ", 
+       RowBox[{"cos", "(", "\[Alpha]", ")"}]}], ",", 
+      RowBox[{"R", " ", 
+       RowBox[{"sin", "(", "\[Alpha]", ")"}]}]}]}], 
+    Scaled[{0.22659574468085114`, 0.96773722955382}], Center], InsetBox[
+    RowBox[{"0", ",", "0"}], Scaled[{0.507446808510639, 0.6984132327857084}], 
+    Center]},
+  ImagePadding->{{0., 1.}, {1., 0.}},
+  ImageSize->{533.2658227848102, Automatic},
+  PlotRange->{{-1.0416666666666667`, 1.0416666666666667`}, {-1.04, 
+   0.5400000000000001}},
+  PlotRangePadding->Automatic], "\[IndentingNewLine]", 
+ RowBox[{"\[Theta]", "=."}], "\[IndentingNewLine]", Cell[TextData[Cell[BoxData[
+  FormBox[
+   RowBox[{
+   "Considero", " ", "la", " ", "formula", " ", "per", " ", "la", " ", 
+    "pressione", " ", "trovata", " ", "seguendo", " ", "il", " ", "calcolo", 
+    " ", "di", " ", "Fily"}], TraditionalForm]],
+  FormatType->"TraditionalForm"]]], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{"p", "=", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "+", 
+      RowBox[{
+       SqrtBox[
+        RowBox[{"2", "\[Pi]"}]], 
+       FractionBox[
+        SqrtBox[
+         RowBox[{"Diff", " ", "\[Tau]"}]], 
+        RowBox[{"2", " ", "R"}]]}]}], ")"}], "Diff", 
+    UnderscriptBox["\[Rho]", "Bulk"]}]}]}]}], "Input",
+ CellChangeTimes->{{3.712651952452364*^9, 3.712652140439455*^9}, {
+   3.712652171653941*^9, 3.712652268269113*^9}, {3.712652541374442*^9, 
+   3.712652739717991*^9}, {3.712652809731361*^9, 3.7126530304259453`*^9}, 
+   3.712653066961372*^9, {3.7126531164874077`*^9, 3.7126531847615347`*^9}, {
+   3.712653950159038*^9, 3.7126539557843018`*^9}, {3.7126540589509697`*^9, 
+   3.712654062628253*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{Cell["\<\
+La forza verso il basso diventa, lungo l'arco\
+\>"], "\[IndentingNewLine]", 
+ RowBox[{"F1", "=", 
+  RowBox[{"2", " ", "p", " ", "*", " ", "R", " ", 
+   RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.712653243505528*^9, 3.712653255799485*^9}, {
+   3.7126538154574614`*^9, 3.712653895069622*^9}, 3.7126540282760973`*^9, {
+   3.712654110737006*^9, 3.7126541116650677`*^9}, {3.7126544225444202`*^9, 
+   3.712654425251957*^9}, {3.712654462730975*^9, 3.7126544672539673`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["La forza verso il basso diventa, lungo l'arco"],
+  TextCell["La forza verso il basso diventa, lungo l'arco"]]], "Output",
+ CellChangeTimes->{
+  3.712653911665751*^9, {3.712653962892674*^9, 3.712653969373288*^9}, 
+   3.712654032372712*^9, 3.712654081029817*^9, 3.712654113717966*^9, {
+   3.7126544536932487`*^9, 3.712654464436255*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{"2", " ", "Diff", " ", "R", " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    FractionBox[
+     RowBox[{
+      SqrtBox[
+       FractionBox["\[Pi]", "2"]], " ", 
+      SqrtBox[
+       RowBox[{"Diff", " ", "\[Tau]"}]]}], "R"]}], ")"}], " ", 
+  RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+  UnderscriptBox["\[Rho]", "Bulk"]}], "\[IndentingNewLine]", Cell["\<\
+La forza lungo i segmenti diventa\
+\>"], "\[IndentingNewLine]", 
+ RowBox[{"F2", "=", 
+  RowBox[{"2", "D", " ", "R", " ", 
+   RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+   UnderscriptBox["\[Rho]", "Bulk"]}]}]}], "Input",
+ CellChangeTimes->{{3.71265448353619*^9, 3.7126545098516483`*^9}, {
+  3.7126545512873783`*^9, 3.712654584704607*^9}, {3.7126546686749773`*^9, 
+  3.712654677595096*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{Cell["\<\
+Lungo i due corners  positivi in\
+\>"], " ", "R", " ", 
+  RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", Cell[","], " ", "R", " ", 
+  RowBox[{"Sin", "[", "\[Theta]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"F3", "=", 
+  RowBox[{
+   SqrtBox[
+    RowBox[{"2", "\[Pi]"}]], "D", " ", "L", " ", 
+   RowBox[{"Cos", "[", 
+    RowBox[{"\[Pi]", "/", "4"}], "]"}], 
+   UnderscriptBox["\[Rho]", 
+    "Bulk"]}]}], "\[IndentingNewLine]", Cell["La forza nel corner negativo"], \
+"\[IndentingNewLine]", 
+ RowBox[{"F", "=", 
+  RowBox[{"-", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"-", "F1"}], "+", "F2", " ", "+", 
+     RowBox[{"2", "*", "F3"}]}], ")"}]}]}]}], "Input",
+ CellChangeTimes->{{3.712654684929926*^9, 3.7126547764677687`*^9}, {
+  3.712656823665699*^9, 3.712656975954486*^9}, {3.712657009744277*^9, 
+  3.712657011650671*^9}, {3.7126570437780952`*^9, 3.7126570760804462`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  SuperscriptBox["R", "2"], " ", 
+  RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+  RowBox[{"Sin", "[", "\[Theta]", "]"}], " ", 
+  InterpretationBox[Cell[","],
+   TextCell[","]], " ", 
+  InterpretationBox[Cell["Lungo i due corners  positivi in"],
+   TextCell["Lungo i due corners  positivi in"]]}]], "Output",
+ CellChangeTimes->{3.712657015318359*^9, 3.712657077780802*^9}],
+
+Cell[BoxData[
+ RowBox[{"D", " ", "L", " ", 
+  SqrtBox["\[Pi]"], " ", 
+  UnderscriptBox["\[Rho]", "Bulk"]}]], "Output",
+ CellChangeTimes->{3.712657015318359*^9, 3.712657077781869*^9}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["La forza nel corner negativo"],
+  TextCell["La forza nel corner negativo"]]], "Output",
+ CellChangeTimes->{3.712657015318359*^9, 3.712657077782565*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "2"}], " ", "D", " ", "L", " ", 
+   SqrtBox["\[Pi]"], " ", 
+   UnderscriptBox["\[Rho]", "Bulk"]}], "-", 
+  RowBox[{"2", " ", "D", " ", "R", " ", 
+   RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+   UnderscriptBox["\[Rho]", "Bulk"]}], "+", 
+  RowBox[{"2", " ", "Diff", " ", "R", " ", 
+   RowBox[{"(", 
+    RowBox[{"1", "+", 
+     FractionBox[
+      RowBox[{
+       SqrtBox[
+        FractionBox["\[Pi]", "2"]], " ", 
+       SqrtBox[
+        RowBox[{"Diff", " ", "\[Tau]"}]]}], "R"]}], ")"}], " ", 
+   RowBox[{"Cos", "[", "\[Theta]", "]"}], " ", 
+   UnderscriptBox["\[Rho]", "Bulk"]}]}]], "Output",
+ CellChangeTimes->{3.712657015318359*^9, 3.712657077783489*^9}]
+}, Open  ]]
+},
+WindowSize->{1301, 744},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (February 23, 2011)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 299, 6, 50, "Input"],
+Cell[881, 30, 175, 4, 45, "Output"]
+}, Open  ]],
+Cell[1071, 37, 930, 23, 30, "Input"],
+Cell[2004, 62, 2313, 54, 553, InheritFromParent],
+Cell[CellGroupData[{
+Cell[4342, 120, 523, 9, 50, "Input"],
+Cell[4868, 131, 373, 6, 30, "Output"]
+}, Open  ]],
+Cell[5256, 140, 770, 20, 176, InheritFromParent],
+Cell[CellGroupData[{
+Cell[6051, 164, 906, 23, 106, "Input"],
+Cell[6960, 189, 396, 9, 30, "Output"],
+Cell[7359, 200, 182, 4, 44, "Output"],
+Cell[7544, 206, 190, 3, 30, "Output"],
+Cell[7737, 211, 709, 20, 68, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

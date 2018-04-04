@@ -1,0 +1,12 @@
+b,sh=np.load("F_cumulative.npy")
+D=0.1
+R=1
+L=sqrt(0.1*0.06)*1.19
+theta=pi/6
+plot(b,sh)
+t=linspace(-1,sin(theta),100)
+plot(t,-(sqrt(2*pi)*L+2*R)*D*cos(arcsin(t)),"r")
+t=linspace(sin(theta),1/sin(theta),100)
+plot(t,-(sqrt(2*pi)*L+2*R)*D*cos(theta)+2*D*sin(theta)*(t-0.5)/cos(theta),"r")
+legend(["simulation","theory"],loc="best")
+show()
